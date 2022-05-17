@@ -129,7 +129,7 @@ describe("ReviewsIndexPage tests", () => {
         );
 
         await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(3); });
-        // restoreConsole();
+        restoreConsole();
 
         const expectedHeaders = ['id', 'Item ID','Reviewer Email', 'Stars', 'Date Reviewed', 'Comments'];
 
