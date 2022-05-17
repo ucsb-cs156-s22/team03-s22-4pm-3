@@ -87,9 +87,9 @@ describe("ReviewsIndexPage tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("5"); });
-        expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("6");
-        expect(getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("7");
+        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1"); });
+        expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
+        expect(getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("3");
 
     });
 
@@ -106,9 +106,9 @@ describe("ReviewsIndexPage tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("5"); });
-        expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("6");
-        expect(getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("7");
+        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1"); });
+        expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
+        expect(getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("3");
 
     });
 
@@ -129,7 +129,7 @@ describe("ReviewsIndexPage tests", () => {
         );
 
         await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(3); });
-        restoreConsole();
+        // restoreConsole();
 
         const expectedHeaders = ['id', 'Item ID','Reviewer Email', 'Stars', 'Date Reviewed', 'Comments'];
 
@@ -146,7 +146,7 @@ describe("ReviewsIndexPage tests", () => {
 
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/MenuItemReview/all").reply(200, reviewsFixtures.threeReviews);
-        axiosMock.onDelete("/api/MenuItemReview").reply(200, "Review with id 5 was deleted");
+        axiosMock.onDelete("/api/MenuItemReview", {params: {id: 1}}).reply(200, "Review with id 1 was deleted");
 
 
         const { getByTestId } = render(
@@ -159,7 +159,7 @@ describe("ReviewsIndexPage tests", () => {
 
         await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toBeInTheDocument(); });
 
-       expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("5"); 
+       expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1"); 
 
 
         const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
@@ -167,7 +167,7 @@ describe("ReviewsIndexPage tests", () => {
        
         fireEvent.click(deleteButton);
 
-        await waitFor(() => { expect(mockToast).toBeCalledWith("Review with id 5 was deleted") });
+        await waitFor(() => { expect(mockToast).toBeCalledWith("Review with id 1 was deleted") });
 
     });
 

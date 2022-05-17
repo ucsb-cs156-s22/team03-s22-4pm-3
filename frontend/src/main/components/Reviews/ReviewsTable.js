@@ -23,15 +23,15 @@ export default function ReviewsTable({ reviews, currentUser }) {
     //     navigate(`/reviews/edit/${cell.row.values.id}`)
     // }
 
-    // // Stryker disable all : hard to test for query caching
+    // Stryker disable all : hard to test for query caching
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
         ["/api/MenuItemReview/all"]
     );
-    // // Stryker enable all  
+    // Stryker enable all  
 
-    // // Stryker disable next-line all : TODO try to make a good test for this
+    // Stryker disable next-line all : TODO try to make a good test for this
     const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
 
     const columns = [
@@ -61,7 +61,7 @@ export default function ReviewsTable({ reviews, currentUser }) {
         },
     ];
 
-    // const testid = "ReviewsTable"    
+    const testid = "ReviewsTable"    
     const columnsIfAdmin = [
         ...columns,
         // ButtonColumn("Edit", "primary", editCallback, "ReviewsTable"),
@@ -73,6 +73,6 @@ export default function ReviewsTable({ reviews, currentUser }) {
     return <OurTable
         data={reviews}
         columns={columnsToDisplay}
-        testid={"ReviewsTable"}
+        testid={testid}
     />;
 };

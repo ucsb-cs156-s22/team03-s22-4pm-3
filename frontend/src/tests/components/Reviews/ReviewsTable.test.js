@@ -83,10 +83,10 @@ describe("ReviewsTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("5");
-    expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("6");
-    expect(getByTestId(`${testId}-cell-row-0-col-itemId`)).toHaveTextContent("5");
-    expect(getByTestId(`${testId}-cell-row-1-col-itemId`)).toHaveTextContent("6");
+    expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
+    expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
+    expect(getByTestId(`${testId}-cell-row-0-col-itemId`)).toHaveTextContent("1");
+    expect(getByTestId(`${testId}-cell-row-1-col-itemId`)).toHaveTextContent("2");
 
     // const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     // expect(editButton).toBeInTheDocument();
