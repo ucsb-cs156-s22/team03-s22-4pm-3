@@ -28,9 +28,9 @@ export default function HelpRequestTable({ requests, currentUser }) {
         { onSuccess: onDeleteSuccess },
         ["/api/helprequest/all"]
     );
-    // // Stryker enable all 
+    // Stryker enable all 
 
-    // // Stryker disable next-line all : TODO try to make a good test for this
+    // Stryker disable next-line all : TODO try to make a good test for this
     const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
 
     const columns = [
@@ -45,10 +45,6 @@ export default function HelpRequestTable({ requests, currentUser }) {
         {
             Header: 'Team Id',
             accessor: 'teamId',
-        },
-        {
-            Header: 'Date',
-            accessor: 'localDateTime',
         },
         {
             Header: 'Table Or BreakoutRoom',
@@ -68,6 +64,8 @@ export default function HelpRequestTable({ requests, currentUser }) {
             accessor: (row, _rowIndex) => String(row.solved) // hack needed for boolean values to show up
         }
     ];
+
+    
 
     const columnsIfAdmin = [
         ...columns,
