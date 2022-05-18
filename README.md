@@ -2,7 +2,7 @@
 
 [![codecov](https://codecov.io/gh/ucsb-cs156-s22/team03-s22-4pm-3/branch/main/graph/badge.svg?token=tFsfeAKmox)](https://codecov.io/gh/ucsb-cs156-s22/team03-s22-4pm-3)
 
-* <https://s22-4pm-3-team02.herokuapp.com>
+* Production deployment: <https://s22-4pm-3-team02.herokuapp.com>
 
 * Storybook (production): <https://ucsb-cs156-s22.github.io/team03-s22-4pm-3-docs>
 * Storybook (development/qa): <https://ucsb-cs156-s22.github.io/team03-s22-4pm-3-docs-qa>
