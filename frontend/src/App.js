@@ -7,7 +7,6 @@ import TodosIndexPage from "main/pages/Todos/TodosIndexPage";
 import TodosCreatePage from "main/pages/Todos/TodosCreatePage";
 import TodosEditPage from "main/pages/Todos/TodosEditPage";
 import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
-import ReviewsIndexPage from "main/pages/Reviews/ReviewsIndexPage";
 
 import DiningCommonsIndexPage from "main/pages/DiningCommons/DiningCommonsIndexPage";
 
