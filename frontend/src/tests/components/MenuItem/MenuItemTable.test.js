@@ -1,6 +1,6 @@
 import {  render } from "@testing-library/react";
 import { menuItemsFixtures } from "fixtures/menuItemsFixtures";
-import MenuItemsTable from "main/components/MenuItems/MenuItemsTable";
+import MenuItemsTable from "main/components/MenuItem/MenuItemTable";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
@@ -92,7 +92,6 @@ describe("MenuItemsTable tests", () => {
     // expect(editButton).toBeInTheDocument();
     // expect(editButton).toHaveClass("btn-primary");
 
-    // KL - commented out stuff below, but not stuff above
     const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
     expect(deleteButton).toBeInTheDocument();
     expect(deleteButton).toHaveClass("btn-danger");

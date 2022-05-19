@@ -1,31 +1,31 @@
-const menuitemFixtures = {
-    onemenuitem: {
-            "id": 1,
-            "diningCommonsCode": "ortega",
-            "name": "Tofu Banh Mi",
-            "station": "Entree"
+const menuItemsFixtures = {
+    oneMenuItem: {
+        "id": 0,
+        "diningCommonsCode": "de-la-guerra",
+        "name": "Taco Pizza",
+        "station": "Pizza"
     },
-    threemenuitem: [
+    threeMenuItems: [
         {
-            "id": 2,
-            "diningCommonsCode": "portola",
-            "name": "Taco",
-            "station": "Food"
-            },
-        {
-            "id": 3,
-            "diningCommonsCode": "carillo",
-            "name": "Stir Fry",
-            "station": "Grill"
+            "id": 0,
+            "diningCommonsCode": "de-la-guerra",
+            "name": "Taco Pizza",
+            "station": "Pizza"
         },
         {
-            "id": 4,
+            "id": 1,
             "diningCommonsCode": "ortega",
-            "name": "Burrito",
-            "station": "Entree"
+            "name": "Mayonnaise (v)",
+            "station": "Condiments"
+        },
+        {
+            "id": 2,
+            "diningCommonsCode": "carrillo",
+            "name": "Meat Sauce",
+            "station": "Pasta"
         } 
     ]
 };
 
 
-export { menuitemFixtures };
+export { menuItemsFixtures };
