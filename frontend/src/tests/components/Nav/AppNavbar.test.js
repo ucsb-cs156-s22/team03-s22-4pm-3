@@ -276,7 +276,7 @@ describe("AppNavbar tests", () => {
     expect(aElement).toBeInTheDocument();
     aElement?.click();
     await waitFor(() =>
-      expect(getByTestId(/appnavbar-orgs-create/)).toBeInTheDocument()
+      expect(getByTestId(/appnavbar-orgs-list/)).toBeInTheDocument()
     );
   });
 
