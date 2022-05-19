@@ -25,7 +25,7 @@ export default function MenuItemTable({ MenuItems, currentUser }) {
   const deleteMutation = useBackendMutation(
     cellToAxiosParamsDelete,
     { onSuccess: onDeleteSuccess },
-    ["/api/ucsbdates/all"]
+    ["/api/UCSBDiningCommonsMenuItem/all"]
   );
   // Stryker enable all
 
@@ -56,7 +56,7 @@ export default function MenuItemTable({ MenuItems, currentUser }) {
   const columnsIfAdmin = [
     ...columns,
     //     ButtonColumn("Edit", "primary", editCallback, "UCSBDatesTable"),
-    ButtonColumn("Delete", "danger", deleteCallback, "UCSBDatesTable"),
+    ButtonColumn("Delete", "danger", deleteCallback, "MenuItemTable"),
   ];
 
   const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN")
