@@ -12,7 +12,7 @@ import ReviewsIndexPage from "main/pages/Reviews/ReviewsIndexPage";
 import DiningCommonsIndexPage from "main/pages/DiningCommons/DiningCommonsIndexPage";
 import OrganizationsIndexPage from "main/pages/Organizations/OrganizationsIndexPage";
 
-import UCSBDatesIndexPage from "main/pages/Organizations/OrganizationsIndexPage";
+import UCSBDatesIndexPage from "main/pages/UCSBDates/UCSBDatesIndexPage";
 import UCSBDatesCreatePage from "main/pages/UCSBDates/UCSBDatesCreatePage";
 import UCSBDatesEditPage from "main/pages/UCSBDates/UCSBDatesEditPage";
 
