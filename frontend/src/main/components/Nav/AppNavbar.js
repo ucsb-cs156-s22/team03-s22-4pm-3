@@ -1,17 +1,27 @@
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
-import AppNavbarLocalhost from "main/components/Nav/AppNavbarLocalhost"
+import AppNavbarLocalhost from "main/components/Nav/AppNavbarLocalhost";
 
-export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUrl = window.location.href }) {
+export default function AppNavbar({
+  currentUser,
+  systemInfo,
+  doLogout,
+  currentUrl = window.location.href,
+}) {
   return (
     <>
-      {
-        (currentUrl.startsWith("http://localhost:3000") || currentUrl.startsWith("http://127.0.0.1:3000")) && (
-          <AppNavbarLocalhost url={currentUrl} />
-        )
-      }
-      <Navbar expand="xl" variant="dark" bg="dark" sticky="top" data-testid="AppNavbar">
+      {(currentUrl.startsWith("http://localhost:3000") ||
+        currentUrl.startsWith("http://127.0.0.1:3000")) && (
+        <AppNavbarLocalhost url={currentUrl} />
+      )}
+      <Navbar
+        expand="xl"
+        variant="dark"
+        bg="dark"
+        sticky="top"
+        data-testid="AppNavbar"
+      >
         <Container>
           <Navbar.Brand as={Link} to="/">
             Example
@@ -26,6 +36,7 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
           <Navbar.Collapse>
             {/* This `nav` component contains all navigation items that show up on the left side */}
             <Nav className="me-auto">
+
               {
                 systemInfo?.springH2ConsoleEnabled && (
                   <>
@@ -62,7 +73,15 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                   </NavDropdown>
                 )
               }
-               {
+              {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="Recommendation Requests" id="appnavbar-recommendation-dropdown" data-testid="appnavbar-recommendation-dropdown" >
+                    <NavDropdown.Item as={Link} to="/Recommendation/list"  data-testid="/appnavbar-recommendation-list/">List Recommendation Requests</NavDropdown.Item>
+                    {/* <NavDropdown.Item as={Link} to="/Recommendation/create">Create Recommendation Requests</NavDropdown.Item> */}
+                  </NavDropdown>
+                )
+              }
+              {
                 hasRole(currentUser, "ROLE_USER") && (
                   <NavDropdown title="UCSB Dining Commons" id="appnavbar-dining-commons-dropdown" data-testid="appnavbar-dining-commons-dropdown" >
                     <NavDropdown.Item as={Link} to="/diningCommons/list" data-testid="appnavbar-dining-commons-list">List Dining Commons</NavDropdown.Item>
@@ -81,24 +100,73 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                   </NavDropdown>
                 )
               }
+
+              
+              
+              
+              
+              {hasRole(currentUser, "ROLE_USER") && (
+                <NavDropdown
+                  title="Organizations"
+                  id="appnavbar-orgs-dropdown"
+                  data-testid="appnavbar-orgs-dropdown"
+                >
+                  <NavDropdown.Item as={Link} to="/organizations/list" data-testid="appnavbar-orgs-list">
+                    List Organizations
+                  </NavDropdown.Item>
+                </NavDropdown>
+              )}
+              {hasRole(currentUser, "ROLE_USER") && (
+                <NavDropdown
+                  title="Articles"
+                  id="appnavbar-articles-dropdown"
+                  data-testid="appnavbar-articles-dropdown"
+                >
+                  <NavDropdown.Item
+                    as={Link}
+                    to="/articles/list"
+                    data-testid="appnavbar-articles-list"
+                  >
+                    List Articles
+                  </NavDropdown.Item>
+                  {/* <NavDropdown.Item as={Link} to="/articles/create">Create Article</NavDropdown.Item> */}
+                </NavDropdown>
+              )}
+              {hasRole(currentUser, "ROLE_USER") && (
+                <NavDropdown
+                  title="Reviews"
+                  id="appnavbar-reviews-dropdown"
+                  data-testid="appnavbar-reviews-dropdown"
+                >
+                  <NavDropdown.Item
+                    as={Link}
+                    to="/reviews/list"
+                    data-testid="appnavbar-reviews-list"
+                  >
+                    List Reviews
+                  </NavDropdown.Item>
+                  {/* <NavDropdown.Item as={Link} to="/todos/create">Create Todo</NavDropdown.Item> */}
+                </NavDropdown>
+              )}
+              
             </Nav>
 
             <Nav className="ml-auto">
               {/* This `nav` component contains all navigation items that show up on the right side */}
-              {
-                currentUser && currentUser.loggedIn ? (
-                  <>
-                    <Navbar.Text className="me-3" as={Link} to="/profile">Welcome, {currentUser.root.user.email}</Navbar.Text>
-                    <Button onClick={doLogout}>Log Out</Button>
-                  </>
-                ) : (
-                  <Button href="/oauth2/authorization/google">Log In</Button>
-                )
-              }
+              {currentUser && currentUser.loggedIn ? (
+                <>
+                  <Navbar.Text className="me-3" as={Link} to="/profile">
+                    Welcome, {currentUser.root.user.email}
+                  </Navbar.Text>
+                  <Button onClick={doLogout}>Log Out</Button>
+                </>
+              ) : (
+                <Button href="/oauth2/authorization/google">Log In</Button>
+              )}
             </Nav>
           </Navbar.Collapse>
-        </Container >
-      </Navbar >
+        </Container>
+      </Navbar>
     </>
   );
 }
