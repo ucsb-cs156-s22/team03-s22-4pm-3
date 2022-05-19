@@ -48,7 +48,7 @@ export default function OrganizationsTable({ orgs, currentUser }) {
         },
         {
             Header: 'Inactive?',
-            accessor: 'inactive',
+            id: 'inactive',
             accessor: (row, _rowIndex) => String(row.inactive) // hack needed for boolean values to show up
 
         }
