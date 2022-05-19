@@ -21,6 +21,7 @@ import UCSBDatesEditPage from "main/pages/UCSBDates/UCSBDatesEditPage";
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
 import "bootstrap/dist/css/bootstrap.css";
+import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
 
 function App() {
   const { data: currentUser } = useCurrentUser();
@@ -42,10 +43,13 @@ function App() {
             </>
           )
         }
-        
-
-
-        
+        { 
+          hasRole(currentUser, "ROLE_ADMIN") && (
+            <>
+              <Route exact path="/helprequest/list" element={<HelpRequestIndexPage />} />
+            </>
+          )
+        }
         {hasRole(currentUser, "ROLE_USER") && (
           <>
             <Route exact path="/todos/list" element={<TodosIndexPage />} />
@@ -112,7 +116,6 @@ function App() {
             />
           </>
         )}
-
       </Routes>
     </BrowserRouter>
   );
