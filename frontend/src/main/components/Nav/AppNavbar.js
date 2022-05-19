@@ -80,6 +80,7 @@ export default function AppNavbar({
                   <NavDropdown.Item as={Link} to="/organizations/list">
                     List Organizations
                   </NavDropdown.Item>
+                  {<NavDropdown.Item as={Link} to="/organzations/create">Create Organization</NavDropdown.Item>}
                 </NavDropdown>
               )}
               {hasRole(currentUser, "ROLE_USER") && (
