@@ -6,26 +6,26 @@ import { hasRole } from "main/utils/currentUser";
 
 export function cellToAxiosParamsDelete(cell) {
   return {
-    url: "/api/UCSBDiningCommonsMenuItem",
+    url: "/api/ucsborganization",
     method: "DELETE",
     params: {
-      id: cell.row.values.id,
+      orgCode: cell.row.values.orgCode,
     },
   };
 }
 
-export default function MenuItemTable({ MenuItems, currentUser }) {
-  // const navigate = useNavigate();
+export default function OrganizationsTable({ orgs, currentUser }) {
+  //const navigate = useNavigate();
 
   // const editCallback = (cell) => {
-  //     navigate(`/ucsbdates/edit/${cell.row.values.id}`)
+  //     navigate(`/ucsborganizations/edit/${cell.row.values.id}`)
   // }
 
   // Stryker disable all : hard to test for query caching
   const deleteMutation = useBackendMutation(
     cellToAxiosParamsDelete,
     { onSuccess: onDeleteSuccess },
-    ["/api/ucsbdates/all"]
+    ["/api/ucsborganization/all"]
   );
   // Stryker enable all
 
@@ -36,38 +36,38 @@ export default function MenuItemTable({ MenuItems, currentUser }) {
 
   const columns = [
     {
-      Header: "id",
-      accessor: "id", // accessor is the "key" in the data
+      Header: "Code",
+      accessor: "orgCode", // accessor is the "key" in the data
     },
     {
-      Header: "Dining Commons Code",
-      accessor: "diningCommonsCode",
+      Header: "Short Translation of Organization",
+      accessor: "orgTranslationShort",
     },
     {
-      Header: "Name",
-      accessor: "name",
+      Header: "Full Translation",
+      accessor: "orgTranslation",
     },
     {
-      Header: "Station",
-      accessor: "station",
+      Header: "Inactive?",
+      id: "inactive",
+      accessor: (row, _rowIndex) => String(row.inactive), // hack needed for boolean values to show up
     },
   ];
 
   const columnsIfAdmin = [
     ...columns,
-    //     ButtonColumn("Edit", "primary", editCallback, "UCSBDatesTable"),
-    ButtonColumn("Delete", "danger", deleteCallback, "UCSBDatesTable"),
+    // ButtonColumn("Edit", "primary", editCallback, "UCSBDatesTable"),
+    ButtonColumn("Delete", "danger", deleteCallback, "OrganizationsTable"),
   ];
 
   const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN")
     ? columnsIfAdmin
     : columns;
-
   return (
     <OurTable
-      data={MenuItems}
+      data={orgs}
       columns={columnsToDisplay}
-      testid={"MenuItemTable"}
+      testid={"OrganizationsTable"}
     />
   );
 }
