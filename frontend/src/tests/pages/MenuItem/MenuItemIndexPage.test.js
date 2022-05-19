@@ -45,7 +45,7 @@ describe("MenuItemIndexPage tests", () => {
     test("renders without crashing for regular user", () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/menuitem/all").reply(200, []);
+        axiosMock.onGet("/api/UCSBDiningCommonsMenuItem/all").reply(200, []);
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -61,7 +61,7 @@ describe("MenuItemIndexPage tests", () => {
     test("renders without crashing for admin user", () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/menuitem/all").reply(200, []);
+        axiosMock.onGet("/api/UCSBDiningCommonsMenuItem/all").reply(200, []);
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -76,7 +76,7 @@ describe("MenuItemIndexPage tests", () => {
     test("renders three menu items without crashing for regular user", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/menuitem/all").reply(200, MenuItemFixtures.threeMenuItems);
+        axiosMock.onGet("/api/UCSBDiningCommonsMenuItem/all").reply(200, MenuItemFixtures.threeMenuItems);
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
@@ -91,7 +91,7 @@ describe("MenuItemIndexPage tests", () => {
     test("renders three menu items without crashing for admin user", async () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/menuitem/all").reply(200, MenuItemFixtures.threeMenuItems);
+        axiosMock.onGet("/api/UCSBDiningCommonsMenuItem/all").reply(200, MenuItemFixtures.threeMenuItems);
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
@@ -106,7 +106,7 @@ describe("MenuItemIndexPage tests", () => {
     test("renders empty table when backend unavailable, user only", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/menuitem/all").timeout();
+        axiosMock.onGet("/api/UCSBDiningCommonsMenuItem/all").timeout();
         const restoreConsole = mockConsole();
         const { queryByTestId } = render(
             <QueryClientProvider client={queryClient}>
