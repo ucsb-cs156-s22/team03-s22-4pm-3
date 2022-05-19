@@ -22,7 +22,7 @@ import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
 import "bootstrap/dist/css/bootstrap.css";
 import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
-
+import MenuItemIndexPage from "main/pages/MenuItem/MenuItemIndexPage";
 function App() {
   const { data: currentUser } = useCurrentUser();
 
@@ -100,6 +100,11 @@ function App() {
               path="/ucsbdates/list"
               element={<UCSBDatesIndexPage />}
             />
+          </>
+        )}
+        {hasRole(currentUser, "ROLE_USER") && (
+          <>
+            <Route exact path="/menuitem/list" element={<MenuItemIndexPage />} />
           </>
         )}
         {hasRole(currentUser, "ROLE_ADMIN") && (
