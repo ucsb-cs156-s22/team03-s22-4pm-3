@@ -8,6 +8,8 @@ import TodosCreatePage from "main/pages/Todos/TodosCreatePage";
 import TodosEditPage from "main/pages/Todos/TodosEditPage";
 import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
 import ReviewsIndexPage from "main/pages/Reviews/ReviewsIndexPage";
+import MenuItemIndexPage from "main/pages/MenuItem/MenuItemIndexPage";
+import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
 
 import RecommendationIndexPage from "main/pages/Recommendation/RecommendationIndexPage";
 
@@ -21,8 +23,6 @@ import UCSBDatesEditPage from "main/pages/UCSBDates/UCSBDatesEditPage";
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
 import "bootstrap/dist/css/bootstrap.css";
-import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
-import MenuItemIndexPage from "main/pages/MenuItem/MenuItemIndexPage";
 function App() {
   const { data: currentUser } = useCurrentUser();
 
@@ -35,14 +35,13 @@ function App() {
         {
           hasRole(currentUser, "ROLE_ADMIN") && <Route exact path="/admin/users" element={<AdminUsersPage />} />
         }
-        
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
               <Route exact path="/Recommendation/list" element={<RecommendationIndexPage />} />
             </>
           )
-        }
+        }        
         { 
           hasRole(currentUser, "ROLE_ADMIN") && (
             <>
@@ -86,6 +85,11 @@ function App() {
               path="/articles/list"
               element={<ArticlesIndexPage />}
             />
+          </>
+        )}
+        {hasRole(currentUser, "ROLE_USER") && (
+          <>
+            <Route exact path="/menuitem/list" element={<MenuItemIndexPage />} />
           </>
         )}
         {hasRole(currentUser, "ROLE_USER") && (

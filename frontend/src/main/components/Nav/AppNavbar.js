@@ -36,7 +36,6 @@ export default function AppNavbar({
           <Navbar.Collapse>
             {/* This `nav` component contains all navigation items that show up on the left side */}
             <Nav className="me-auto">
-
               {
                 systemInfo?.springH2ConsoleEnabled && (
                   <>
@@ -66,21 +65,7 @@ export default function AppNavbar({
                   </NavDropdown>
                 )
               }
-              {
-                hasRole(currentUser, "ROLE_USER") && (
-                  <NavDropdown title="Help Request" id="appnavbar-helprequest-dropdown" data-testid="appnavbar-helprequest-dropdown" >
-                    <NavDropdown.Item as={Link} to="/helprequest/list" data-testid="appnavbar-helprequest-list">List Help Requests</NavDropdown.Item>
-                  </NavDropdown>
-                )
-              }
-              {
-                hasRole(currentUser, "ROLE_USER") && (
-                  <NavDropdown title="Recommendation Requests" id="appnavbar-recommendation-dropdown" data-testid="appnavbar-recommendation-dropdown" >
-                    <NavDropdown.Item as={Link} to="/Recommendation/list"  data-testid="/appnavbar-recommendation-list/">List Recommendation Requests</NavDropdown.Item>
-                    {/* <NavDropdown.Item as={Link} to="/Recommendation/create">Create Recommendation Requests</NavDropdown.Item> */}
-                  </NavDropdown>
-                )
-              }
+
               {
                 hasRole(currentUser, "ROLE_USER") && (
                   <NavDropdown title="UCSB Dining Commons" id="appnavbar-dining-commons-dropdown" data-testid="appnavbar-dining-commons-dropdown" >
@@ -102,24 +87,31 @@ export default function AppNavbar({
               }
               {
                 hasRole(currentUser, "ROLE_USER") && (
-                  <NavDropdown title="menu item" id="appnavbar-menu-item-dropdown" data-testid="appnavbar-menu-item-dropdown" >
-                    <NavDropdown.Item as={Link} to="/menuitem/list" data-testid="appnavbar-menu-item-list">List UCSB Dining Commons Menu Items</NavDropdown.Item>
+                  <NavDropdown title="Help Request" id="appnavbar-helprequest-dropdown" data-testid="appnavbar-helprequest-dropdown" >
+                    <NavDropdown.Item as={Link} to="/helprequest/list" data-testid="appnavbar-helprequest-list">List Help Requests</NavDropdown.Item>
                   </NavDropdown>
                 )
               }
-
-              
-              
-              
-              
+              {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="Recommendation Requests" id="appnavbar-recommendation-dropdown" data-testid="appnavbar-recommendation-dropdown" >
+                    <NavDropdown.Item as={Link} to="/Recommendation/list"  data-testid="/appnavbar-recommendation-list/">List Recommendation Requests</NavDropdown.Item>
+                    {/* <NavDropdown.Item as={Link} to="/Recommendation/create">Create Recommendation Requests</NavDropdown.Item> */}
+                  </NavDropdown>
+                )
+              }
               {hasRole(currentUser, "ROLE_USER") && (
                 <NavDropdown
-                  title="Organizations"
-                  id="appnavbar-orgs-dropdown"
-                  data-testid="appnavbar-orgs-dropdown"
+                  title="Menu Item"
+                  id="appnavbar-menu-item-dropdown"
+                  data-testid="appnavbar-menu-item-dropdown"
                 >
-                  <NavDropdown.Item as={Link} to="/organizations/list" data-testid="appnavbar-orgs-list">
-                    List Organizations
+                  <NavDropdown.Item
+                    as={Link}
+                    to="/menuitem/list"
+                    data-testid="appnavbar-menu-item-list"
+                  >
+                    List UCSB Dining Commons Menu Items
                   </NavDropdown.Item>
                 </NavDropdown>
               )}
@@ -155,7 +147,17 @@ export default function AppNavbar({
                   {/* <NavDropdown.Item as={Link} to="/todos/create">Create Todo</NavDropdown.Item> */}
                 </NavDropdown>
               )}
-              
+              {hasRole(currentUser, "ROLE_USER") && (
+                <NavDropdown
+                  title="Organizations"
+                  id="appnavbar-orgs-dropdown"
+                  data-testid="appnavbar-orgs-dropdown"
+                >
+                  <NavDropdown.Item as={Link} to="/organizations/list" data-testid="appnavbar-orgs-list">
+                    List Organizations
+                  </NavDropdown.Item>
+                </NavDropdown>
+              )}
             </Nav>
 
             <Nav className="ml-auto">
