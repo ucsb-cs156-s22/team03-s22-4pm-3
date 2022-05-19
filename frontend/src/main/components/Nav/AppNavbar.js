@@ -66,7 +66,6 @@ export default function AppNavbar({
                   </NavDropdown>
                 )
               }
-
               {
                 hasRole(currentUser, "ROLE_USER") && (
                   <NavDropdown title="Recommendation Requests" id="appnavbar-recommendation-dropdown" data-testid="appnavbar-recommendation-dropdown" >
@@ -75,8 +74,7 @@ export default function AppNavbar({
                   </NavDropdown>
                 )
               }
-
-               {
+              {
                 hasRole(currentUser, "ROLE_USER") && (
                   <NavDropdown title="UCSB Dining Commons" id="appnavbar-dining-commons-dropdown" data-testid="appnavbar-dining-commons-dropdown" >
                     <NavDropdown.Item as={Link} to="/diningCommons/list" data-testid="appnavbar-dining-commons-list">List Dining Commons</NavDropdown.Item>
@@ -101,13 +99,7 @@ export default function AppNavbar({
                     <NavDropdown.Item as={Link} to="/menuitem/list" data-testid="appnavbar-menu-item-list">List UCSB Dining Commons Menu Items</NavDropdown.Item>
                   </NavDropdown>
                 )
-              }
-
-              
-              
-              
-              
-              
+              }          
               {hasRole(currentUser, "ROLE_USER") && (
                 <NavDropdown
                   title="Articles"
@@ -141,7 +133,6 @@ export default function AppNavbar({
                 </NavDropdown>
               )}
               
-
             </Nav>
 
             <Nav className="ml-auto">
