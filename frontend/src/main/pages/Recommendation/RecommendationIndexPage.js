@@ -2,10 +2,10 @@ import React from 'react'
 import { useBackend } from 'main/utils/useBackend'; // use prefix indicates a React Hook
 
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
-import RecommendationTable from 'main/components/Recommendation/RecommendationTable';
 import { useCurrentUser } from 'main/utils/currentUser' // use prefix indicates a React Hook
+import RecommendationTable from 'main/components/Recommendation/RecommendationTable';
 
-export default function UCSBDatesIndexPage() {
+export default function RecommendationIndexPage() {
 
   const currentUser = useCurrentUser();
 

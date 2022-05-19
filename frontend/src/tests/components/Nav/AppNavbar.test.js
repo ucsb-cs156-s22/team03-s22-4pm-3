@@ -237,7 +237,7 @@ describe("AppNavbar tests", () => {
 
     });
 
-    test("renders the reviews menu correctly for an admin", async () => {
+    test("renders the recommendation menu correctly for an admin", async () => {
 
         const currentUser = currentUserFixtures.adminUser;
         const systemInfo = systemInfoFixtures.showingBoth;

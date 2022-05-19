@@ -46,7 +46,7 @@ export default function RecommendationTable({ recommendation, currentUser }) {
 
     const columns = [
         {
-            Header: 'ID:',
+            Header: 'id',
             accessor: 'id', // accessor is the "key" in the data
         },
         {
@@ -59,7 +59,7 @@ export default function RecommendationTable({ recommendation, currentUser }) {
         },
         {
             Header: 'Done?',
-            accessor: 'done',
+            id: 'done',
             accessor: (row, _rowIndex) => String(row.done) // hack needed for boolean values to show up
         },
         {
@@ -76,6 +76,8 @@ export default function RecommendationTable({ recommendation, currentUser }) {
         }
     ];
 
+    const testid = "RecommendationTable"
+
     const columnsIfAdmin = [
         ...columns,
         // ButtonColumn("Edit", "primary", editCallback, "RecommendationTable"),
@@ -88,6 +90,6 @@ export default function RecommendationTable({ recommendation, currentUser }) {
     return <OurTable
         data={recommendation}
         columns={columnsToDisplay}
-        testid={"RecommendationTable"}
+        testid={testid}
     />;
 };

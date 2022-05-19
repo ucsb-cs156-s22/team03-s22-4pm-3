@@ -45,7 +45,7 @@ describe("RecommendationIndexPage tests", () => {
     test("renders without crashing for regular user", () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/MenuItemReview/all").reply(200, []);
+        axiosMock.onGet("/api/Recommendation/all").reply(200, []);
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -61,7 +61,7 @@ describe("RecommendationIndexPage tests", () => {
     test("renders without crashing for admin user", () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/MenuItemReview/all").reply(200, []);
+        axiosMock.onGet("/api/Recommendation/all").reply(200, []);
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -77,7 +77,7 @@ describe("RecommendationIndexPage tests", () => {
     test("renders three recommendation without crashing for regular user", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/MenuItemReview/all").reply(200, recommendationFixtures.threeRecommendations);
+        axiosMock.onGet("/api/Recommendation/all").reply(200, recommendationFixtures.threeRecommendations);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -96,7 +96,7 @@ describe("RecommendationIndexPage tests", () => {
     test("renders three recommendation without crashing for admin user", async () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/MenuItemReview/all").reply(200, recommendationFixtures.threeRecommendation);
+        axiosMock.onGet("/api/Recommendation/all").reply(200, recommendationFixtures.threeRecommendations);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -116,7 +116,7 @@ describe("RecommendationIndexPage tests", () => {
         setupUserOnly();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/MenuItemReview/all").timeout();
+        axiosMock.onGet("/api/Recommendation/all").timeout();
 
         const restoreConsole = mockConsole();
 
@@ -131,7 +131,7 @@ describe("RecommendationIndexPage tests", () => {
         await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(3); });
         restoreConsole();
 
-        const expectedHeaders = ['id', 'Item ID','Reviewer Email', 'Stars', 'Date Reviewed', 'Comments'];
+        const expectedHeaders = ['id', 'Date Needed?','Date Requested?', 'Done?', 'Explanation?', 'Professor Email?','Requester Email?'];
 
         expectedHeaders.forEach((headerText) => {
             const header = getByText(headerText);
@@ -145,8 +145,8 @@ describe("RecommendationIndexPage tests", () => {
         setupAdminUser();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/MenuItemReview/all").reply(200, recommendationFixtures.threeRecommendation);
-        axiosMock.onDelete("/api/MenuItemReview", {params: {id: 1}}).reply(200, "Review with id 1 was deleted");
+        axiosMock.onGet("/api/Recommendation/all").reply(200, recommendationFixtures.threeRecommendations);
+        axiosMock.onDelete("/api/Recommendation", {params: {id: 1}}).reply(200, "Recommendation with id 1 was deleted");
 
 
         const { getByTestId } = render(
@@ -167,7 +167,7 @@ describe("RecommendationIndexPage tests", () => {
        
         fireEvent.click(deleteButton);
 
-        await waitFor(() => { expect(mockToast).toBeCalledWith("Review with id 1 was deleted") });
+        await waitFor(() => { expect(mockToast).toBeCalledWith("Recommendation with id 1 was deleted") });
 
     });
 

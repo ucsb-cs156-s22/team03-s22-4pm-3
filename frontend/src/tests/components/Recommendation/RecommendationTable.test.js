@@ -62,15 +62,15 @@ describe("RecommendationTable tests", () => {
     const { getByText, getByTestId } = render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RecommendationTable recommendation={recommendationFixtures.threeRecommendation} currentUser={currentUser} />
+          <RecommendationTable recommendation={recommendationFixtures.threeRecommendations} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
     );
 
 
-    const expectedHeaders = ['id', 'Item ID','Reviewer Email', 'Stars', 'Date Reviewed', 'Comments'];
-    const expectedFields = ['id', 'itemId','reviewerEmail', 'stars','dateReviewed','comments'];
+    const expectedHeaders = ['id', 'Date Needed?','Date Requested?', 'Done?', 'Explanation?', 'Professor Email?','Requester Email?'];
+    const expectedFields = ['id', 'dateNeeded','dateRequested', 'done','explanation','professorEmail', 'requesterEmail'];
     const testId = "RecommendationTable";
 
     expectedHeaders.forEach((headerText) => {
@@ -85,8 +85,8 @@ describe("RecommendationTable tests", () => {
 
     expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
     expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
-    expect(getByTestId(`${testId}-cell-row-0-col-itemId`)).toHaveTextContent("1");
-    expect(getByTestId(`${testId}-cell-row-1-col-itemId`)).toHaveTextContent("2");
+    // expect(getByTestId(`${testId}-cell-row-0-col-itemId`)).toHaveTextContent("1");
+    // expect(getByTestId(`${testId}-cell-row-1-col-itemId`)).toHaveTextContent("2");
 
     // const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     // expect(editButton).toBeInTheDocument();
