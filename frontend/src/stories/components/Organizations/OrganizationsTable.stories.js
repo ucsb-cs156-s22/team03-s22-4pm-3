@@ -5,7 +5,7 @@ import { organizationsFixtures } from "fixtures/organizationsFixtures";
 
 export default {
   title: "components/Organizations/OrganizationsTable",
-  component: organizationsTable,
+  component: OrganizationsTable,
 };
 
 const Template = (args) => {
