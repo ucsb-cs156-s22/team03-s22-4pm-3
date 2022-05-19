@@ -21,7 +21,7 @@ import UCSBDatesEditPage from "main/pages/UCSBDates/UCSBDatesEditPage";
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
 import "bootstrap/dist/css/bootstrap.css";
-
+import MenuItemIndexPage from "main/pages/MenuItem/MenuItemIndexPage";
 function App() {
   const { data: currentUser } = useCurrentUser();
 
