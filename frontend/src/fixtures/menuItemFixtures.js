@@ -1,31 +1,31 @@
-const menuItemsFixtures = {
+const MenuItemFixtures = {
     oneMenuItem: {
-        "id": 0,
-        "diningCommonsCode": "de-la-guerra",
-        "name": "Taco Pizza",
-        "station": "Pizza"
+        "id": 1,
+        "diningCommonsCode": "ortega",
+        "name": "chicken caesar salad",
+        "station": "entrees"
     },
     threeMenuItems: [
         {
-            "id": 0,
-            "diningCommonsCode": "de-la-guerra",
-            "name": "Taco Pizza",
-            "station": "Pizza"
-        },
-        {
             "id": 1,
             "diningCommonsCode": "ortega",
-            "name": "Mayonnaise (v)",
-            "station": "Condiments"
+            "name": "chicken caesar salad",
+            "station": "entrees"
         },
         {
             "id": 2,
-            "diningCommonsCode": "carrillo",
-            "name": "Meat Sauce",
-            "station": "Pasta"
-        } 
+            "diningCommonsCode": "de la guerra",
+            "name": "apple pie",
+            "station": "desserts"
+        },
+        {
+            "id": 3,
+            "diningCommonsCode": "portola",
+            "name": "cucumber sushi",
+            "station": "entrees"
+        }
     ]
 };
 
 
-export { menuItemsFixtures };
+export { MenuItemFixtures };
