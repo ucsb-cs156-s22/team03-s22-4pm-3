@@ -9,6 +9,8 @@ import TodosEditPage from "main/pages/Todos/TodosEditPage";
 import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
 import ReviewsIndexPage from "main/pages/Reviews/ReviewsIndexPage";
 
+import RecommendationIndexPage from "main/pages/Recommendation/RecommendationIndexPage";
+
 import DiningCommonsIndexPage from "main/pages/DiningCommons/DiningCommonsIndexPage";
 import OrganizationsIndexPage from "main/pages/Organizations/OrganizationsIndexPage";
 
@@ -28,9 +30,22 @@ function App() {
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/profile" element={<ProfilePage />} />
-        {hasRole(currentUser, "ROLE_ADMIN") && (
-          <Route exact path="/admin/users" element={<AdminUsersPage />} />
-        )}
+
+        {
+          hasRole(currentUser, "ROLE_ADMIN") && <Route exact path="/admin/users" element={<AdminUsersPage />} />
+        }
+        
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/Recommendation/list" element={<RecommendationIndexPage />} />
+            </>
+          )
+        }
+        
+
+
+        
         {hasRole(currentUser, "ROLE_USER") && (
           <>
             <Route exact path="/todos/list" element={<TodosIndexPage />} />
@@ -97,6 +112,7 @@ function App() {
             />
           </>
         )}
+
       </Routes>
     </BrowserRouter>
   );
