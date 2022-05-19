@@ -1,28 +1,28 @@
 const MenuItemFixtures = {
     oneMenuItem: {
         "id": 1,
-        "diningCommonsCode": "ortega",
-        "name": "chicken caesar salad",
-        "station": "entrees"
+        "diningCommonsCode": "carillo",
+        "name": "stir fry",
+        "station": "mongolian grill"
     },
     threeMenuItems: [
         {
             "id": 1,
             "diningCommonsCode": "ortega",
-            "name": "chicken caesar salad",
+            "name": "pineapple fried rice",
             "station": "entrees"
         },
         {
             "id": 2,
             "diningCommonsCode": "de la guerra",
-            "name": "apple pie",
-            "station": "desserts"
+            "name": "chimichanga",
+            "station": "grill"
         },
         {
             "id": 3,
             "diningCommonsCode": "portola",
-            "name": "cucumber sushi",
-            "station": "entrees"
+            "name": "ice cream",
+            "station": "dessert"
         }
     ]
 };
