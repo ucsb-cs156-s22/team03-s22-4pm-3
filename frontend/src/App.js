@@ -8,20 +8,22 @@ import TodosCreatePage from "main/pages/Todos/TodosCreatePage";
 import TodosEditPage from "main/pages/Todos/TodosEditPage";
 import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
 import ReviewsIndexPage from "main/pages/Reviews/ReviewsIndexPage";
+import MenuItemIndexPage from "main/pages/MenuItem/MenuItemIndexPage";
+import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
 
 import RecommendationIndexPage from "main/pages/Recommendation/RecommendationIndexPage";
 
 import DiningCommonsIndexPage from "main/pages/DiningCommons/DiningCommonsIndexPage";
 import OrganizationsIndexPage from "main/pages/Organizations/OrganizationsIndexPage";
 
-import UCSBDatesIndexPage from "main/pages/Organizations/OrganizationsIndexPage";
+import UCSBDatesIndexPage from "main/pages/UCSBDates/UCSBDatesIndexPage";
 import UCSBDatesCreatePage from "main/pages/UCSBDates/UCSBDatesCreatePage";
 import UCSBDatesEditPage from "main/pages/UCSBDates/UCSBDatesEditPage";
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
 import "bootstrap/dist/css/bootstrap.css";
-import MenuItemIndexPage from "main/pages/MenuItem/MenuItemIndexPage";
+
 function App() {
   const { data: currentUser } = useCurrentUser();
 
@@ -34,7 +36,6 @@ function App() {
         {
           hasRole(currentUser, "ROLE_ADMIN") && <Route exact path="/admin/users" element={<AdminUsersPage />} />
         }
-        
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
@@ -42,6 +43,13 @@ function App() {
             </>
           )
         }        
+        { 
+          hasRole(currentUser, "ROLE_ADMIN") && (
+            <>
+              <Route exact path="/helprequest/list" element={<HelpRequestIndexPage />} />
+            </>
+          )
+        }
         {hasRole(currentUser, "ROLE_USER") && (
           <>
             <Route exact path="/todos/list" element={<TodosIndexPage />} />
@@ -113,7 +121,6 @@ function App() {
             />
           </>
         )}
-
       </Routes>
     </BrowserRouter>
   );
