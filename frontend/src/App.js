@@ -41,11 +41,7 @@ function App() {
               <Route exact path="/Recommendation/list" element={<RecommendationIndexPage />} />
             </>
           )
-        }
-        
-
-
-        
+        }        
         {hasRole(currentUser, "ROLE_USER") && (
           <>
             <Route exact path="/todos/list" element={<TodosIndexPage />} />
