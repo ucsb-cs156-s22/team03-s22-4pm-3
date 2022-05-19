@@ -106,7 +106,7 @@ export default function AppNavbar({
                   id="appnavbar-orgs-dropdown"
                   data-testid="appnavbar-orgs-dropdown"
                 >
-                  <NavDropdown.Item as={Link} to="/organizations/list">
+                  <NavDropdown.Item as={Link} to="/organizations/list" data-testid="appnavbar-orgs-list">
                     List Organizations
                   </NavDropdown.Item>
                 </NavDropdown>
