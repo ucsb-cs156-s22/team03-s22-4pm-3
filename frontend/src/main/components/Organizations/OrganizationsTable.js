@@ -12,7 +12,7 @@ export function cellToAxiosParamsDelete(cell) {
         orgCode: cell.row.values.orgCode,
       },
     };
-  }
+}
 
 
 export default function OrganizationsTable({ orgs, currentUser }) {

@@ -144,7 +144,9 @@ describe("MenuItemIndexPage tests", () => {
         setupAdminUser();
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/UCSBDiningCommonsMenuItem/all").reply(200, MenuItemFixtures.threeMenuItems);
-        axiosMock.onDelete("/api/UCSBDiningCommonsMenuItem").reply(200, "MenuItem with id 1 was deleted");
+        axiosMock.onDelete("/api/UCSBDiningCommonsMenuItem", { params: { id: 1 } })
+        .reply(200, "MenuItem with id 1 was deleted");
+
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
